@@ -11,13 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 Class WildController extends AbstractController
 {
   /**
-   * @Route("/show/{slug}",
-      requirements={"slug"="[a-z0-9\-\/]+"},
-      name="show")
+   * @Route("/show/{slug}", requirements={"slug"="[a-z0-9\-\/]+"}, name="show")
   */
   public function show(?string $slug = ""): Response
   {
-      $slug = str_replace('-', ' ', $slug);
+      $slug = str_replace('-',' ', $slug);
       $slug = ucwords($slug);
       if(empty($slug)) {
           $slug = "Aucune série sélectionnée, veuillez en choisir une";
